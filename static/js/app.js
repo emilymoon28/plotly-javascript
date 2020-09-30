@@ -42,25 +42,33 @@ d3.json("./data/samples.json").then(function(data){
         // Initialize bar chart x and y arrays
         var x = [];
         var y = [];
+        var z = [];
 
         var barResult=samples.filter(sample=>sample.id.toString()===ID)[0]
         top10Values=barResult.sample_values.slice(0,10);
         top10Otu=barResult.otu_ids.slice(0,10).map(value=>`OTU ${value}`);
+        top10Labels=barResult.otu_labels.slice(0,10);
 
         x=top10Values.reverse();
         y=top10Otu.reverse();
+        z=top10Labels.reverse();
 
         var trace1={
             x: x,
             y: y,
             type:"bar",
+            text:z,
             orientation:'h'
         };
        var data=[trace1];
 
+       var layout = {
+            title: "Top 10 OTUs and Values"
+        };
+
        console.log(data);
 
-       Plotly.newPlot('bar',data);   
+       Plotly.newPlot('bar',data,layout);   
     };
 
     //create bubble chart
@@ -88,10 +96,16 @@ d3.json("./data/samples.json").then(function(data){
             }
        };
 
+       var layout2 = {
+           title: "OTU and Values",
+           xaxis: {title:{text:"OTU ID"}},
+           yaxis: {title:{text:"Value"}}
+       };
+
       var data2=[trace2];
       console.log(data2);
 
-      Plotly.newPlot('bubble',data2);
+      Plotly.newPlot('bubble',data2,layout2);
 
     };
 
@@ -161,8 +175,8 @@ d3.json("./data/samples.json").then(function(data){
                   color: '850000'
                 }
               }],
-            height: 400,
-            width: 400,
+            height: 500,
+            width: 500,
             xaxis: {zeroline:false, showticklabels:false,
                        showgrid: false, range: [-1, 1]},
             yaxis: {zeroline:false, showticklabels:false,
