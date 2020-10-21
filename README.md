@@ -1,8 +1,8 @@
 # plotly-javascript
 
 This project is to buil an interactive dashbord to explor a small handfil of microbial species ((also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people.
-<br>
-<a scr="https://emilymoon28.github.io/plotly-javascript/">Here's the website</a>
+<br><br>
+<a href="https://emilymoon28.github.io/plotly-javascript/" target="_blank">Here's the website</a>
 <br>
 In the dashboard, users can choose a specific individual. There are 4 sections to show different aspects of the study.
 <br>
